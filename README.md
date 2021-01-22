@@ -60,6 +60,9 @@ For the last two deep learning models, since 1,000 samples were not nearly enoug
 
 ----
 # Evaluations
+![plot]('Desktop/Public GitHub Repo/Music-Genre-Classification-Capstone-Project/Images/Scatterplot.png')
+
+
 For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score of 10% wasn't too difficult to outperform, so I decided to rank the models based on their accuracy scores with unseen test data.
 
 After fitting all the models, it was evident that all the models suffered from high variance, some more so than others. Based on accuracy score discrepancy between training and testing data, KNN was the most overfit model with accuracy score close to 100%, but 62.4% with unseen test data. CRNN with dropout layers ended up being the best performer with 98.6% accuracy score with training data and 86.7% with unseen test data.
