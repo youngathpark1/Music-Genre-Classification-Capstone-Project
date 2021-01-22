@@ -69,6 +69,9 @@ After fitting all the models, it was evident that all the models suffered from h
 
 Using CRNN with dropout layers as my primary model, I thought it'd be interesting to see if there are any interesting trends in terms of which genre is misclassified the most.
 
+
+![](./Images/Confusion Matrix.png)
+
 Looking at the confusion matrix, I found that classical had the least numst of misclassifications whereas rock had the most number of misclassifications. Digging a little bit deeper into misclassifications within rock, I found that many were being misclassified as metal, blues, and country. After listening to the music audio samples, I found that some portions of the samples were "uncharacteristic" to a typical rock genre song and had a different feel and taste to them which suggests why the model may have misclassified them.
 
 ---
