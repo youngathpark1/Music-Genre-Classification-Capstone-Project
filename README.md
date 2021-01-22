@@ -52,11 +52,11 @@ Since the GTZAN Genre Collection dataset contains actual music audio samples, I 
 
 For this project, I decided incorporate three stages of modeling. First, I applied traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost using features that I extracted. 
 
-Second, I derived what are known as Mel-Spectrograms for all my music audio samples, which are visual rerepresentation of sound. Mel-speectrograms can be treated like images so I fed these through a Convolutional Neural Networks. 
+Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are visual rerepresentation of sound. Mel-speectrograms can be treated like images so I fed these through a Convolutional Neural Network model.
 
-Lastly, since music is essentially a sequential information over a duration of time, I applied a hybrid approach of combining convolutional layers and recurrent layers (GRU). 
+Lastly, since music also contains sequential information over a duration of time, I applied a hybrid approach of combining convolutional layers and recurrent layers (GRU). Based on my research, this approach is becoming common in the field of voice, speech, and music recognition.
 
-For the last two deep learning models, since 1,000 samples were not nearly enough, I had to create mini-samples by slicing each 30 sec sample into 10 different 3 sec mini-samples. By doing so, I was able to expand my entire dataset from 1,000 samples to 10,000 samples.
+For the last two deep learning models, it's important to note that since 1,000 samples were not enough to train deep learning models, I had to create mini-samples by slicing each 30 sec sample into 10 separate 3 sec mini-samples. By doing so, I was able to expand my entire dataset from 1,000 samples to 10,000 samples.
 
 ----
 # Evaluations
@@ -76,7 +76,11 @@ Looking at the confusion matrix, I found that classical had the least numst of m
 
 ---
 # Conclusions / Future Considerations
-Convolutional Recurrent Neural Network model was able to achieve accuracy score as high as 86.7% with unseen test data. While investigating some of the misclassifications, I found that misclassifications took place primarily due to the fact that certain music audio samples felt more like a blend of certain genres. This seems to suggest that sub-genres may be a difficult obstacle when training a model to classify genre correctly. However, with more data and application of deep learning models, I believe this is a problem that can easily be addressed.
+Working with raw music audio files, I leveraged a Python module Librosa to perform my own feature extraction. Using these features which are numerical representation of the samples, I ran various traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost. Out of these traditional classifiers, SVM was the best performer and scored 100% accuracy with training data and 72% accuracy with unseen test data.
+
+To incorporate deep learning models, I extracted Mel-Spectrograms for all the audio samples. However, since 1,000 music samples were not enough to train a deep learning model, I sliced each 30 sec sample into 10 different 3 sec mini-samples. Since Mel-Spectrograms are essentially images, I created a Convolutional Neural Network model (with and without regularization for comparison purposes) and fed the images through the model.
+
+Lastly, to implement a more hybrid approah that is becoming more popular in the field of voice, speech, and music recognition, I implemented a Convolutional Recurrent Neural Network model in which convolutional layers and recurrent layers (GRU) are combined together. CRNN model was able to achieve an accuracy score as high as 86.7% with unseen test data which was very promising. While investigating some of the misclassifications, I found that misclassifications took place primarily due to the fact that certain music audio samples felt more like a blend of certain genres. This seems to suggest that learning sub-genres and/or music that doesn't necessarily fall "cleanly" to a certain genre may pose a difficult challenge. However, with more data and various applications of deep learning models, I believe this is a problem that can be properly addressed.
 
 Here are some future considerations:
 
