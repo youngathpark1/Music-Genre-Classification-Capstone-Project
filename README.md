@@ -60,7 +60,7 @@ For the last two deep learning models, since 1,000 samples were not nearly enoug
 
 ----
 # Evaluations
-![plot]('Desktop/Public GitHub Repo/Music-Genre-Classification-Capstone-Project/Images/Scatterplot.png')
+![Scatterplot](Desktop/Public GitHub Repo/Music-Genre-Classification-Capstone-Project/Images/Scatterplot.png)
 
 
 For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score of 10% wasn't too difficult to outperform, so I decided to rank the models based on their accuracy scores with unseen test data.
