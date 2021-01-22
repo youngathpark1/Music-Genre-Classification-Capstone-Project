@@ -46,11 +46,15 @@ Since the GTZAN Genre Collection dataset contains actual music audio samples, I 
 |**z_cr_mean**|float|final_df|Mean of the zero-crossing rate (point in a digital audio file where the sample is at zero amplitude)
 |**z_cr_mean**|float|final_df|Standard deviation of the zero-crossing rate (point in a digital audio file where the sample is at zero amplitude)
 |**z_cr_mean**|float|final_df|Skewness of the zero-crossing rate (point in a digital audio file where the sample is at zero amplitude)
+|**mel-spectrogram**|np array|df|representation of the signal strength, over a period of time at various frequencies
 
 ---
 ### Modeling
 
 For this project, I decided incorporate three stages of modeling. First, I applied traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost using features that I extracted. 
+
+![](./Images/Melspecs.png)
+
 
 Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are visual rerepresentation of sound. Mel-speectrograms can be treated like images so I fed these through a Convolutional Neural Network model.
 
