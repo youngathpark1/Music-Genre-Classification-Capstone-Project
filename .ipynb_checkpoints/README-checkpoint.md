@@ -9,7 +9,8 @@ As somone who casually enjoys listening to music and plays a few instruments her
 ### Problem Statement
 Music plays a critical role in our everyday lives. Companies like Spotify, Pandora, Apple, Google, and other major music platforms are constantly looking for new and fresh ways to categorize and classify a vast number of artists and genres based on users' taste and preference. Consequently, it is absolutely critical for companies to be able to manage their music inventory efficiently in order to connect with their customers more personally.
 
-In this project, I set out to answer the question: **'Given a set of music audio samples, can I apply machine learning to predict their genres with a high level of accuracy?'**
+In this project, I set out to answer the question: **Can machine learning, with a high level of accuracy, classify/predict various music genres?
+**
 
 ---
 
@@ -23,7 +24,7 @@ Source: http://marsyas.info/downloads/datasets.html
 ### Feature Extraction
 Feature Extraction is a process of computing a compact numerical representation that can be used to characterize a segment of audio. For the purpose of this project, it is sufficient to note that the features basically represent the timbral texture, rhytmic features, and pitch content of any particular music audio sample.
 
-Since the GTZAN Genre Collection dataset contains actual music audio samples, I had to perform my own feature extraction using a Python module called Librosa which is suitable for music/audio analysis and has feature extraction capabilities. 
+Since the GTZAN Genre Collection dataset contains actual music audio samples, I had to perform my own feature extraction using a Python library called Librosa which is suitable for music/audio analysis and has feature extraction capabilities. 
 
 - - - 
 ### Data Dictionary
@@ -51,14 +52,14 @@ Since the GTZAN Genre Collection dataset contains actual music audio samples, I 
 ---
 ### Modeling
 
-For this project, I decided incorporate three stages of modeling. First, I applied traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost using features that I extracted. 
+For this project, I decided incorporate three stages of modeling. First, I trained traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost using features that I extracted. 
 
 ![](./Images/Melspecs.png)
 
 
-Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are visual rerepresentation of sound. Mel-speectrograms can be treated like images so I fed these through a Convolutional Neural Network model.
+Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are visual rerepresentation of sound. Mel-speectrograms are essentially images so I used them to train a Convolutional Neural Network model.
 
-Lastly, since music also contains sequential information over a duration of time, I applied a hybrid approach of combining convolutional layers and recurrent layers (GRU). Based on my research, this approach is becoming common in the field of voice, speech, and music recognition.
+Lastly, since music also contains sequential information over a duration of time, I applied a hybrid approach of combining convolutional layers and recurrent layers (GRU). Based on research, I found this approach is gaining attraction in the field of voice, speech, and music recognition.
 
 For the last two deep learning models, it's important to note that since 1,000 samples were not enough to train deep learning models, I had to create mini-samples by slicing each 30 sec sample into 10 separate 3 sec mini-samples. By doing so, I was able to expand my entire dataset from 1,000 samples to 10,000 samples.
 
@@ -67,23 +68,23 @@ For the last two deep learning models, it's important to note that since 1,000 s
 ![](./Images/Scatterplot.png)
 
 
-For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score of 10% wasn't too difficult to outperform, so I decided to rank the models based on their accuracy scores with unseen test data.
+For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score of 10% wasn't too difficult to outperform, so I decided to rank the models based on their accuracy scores with unseen testing data.
 
-After fitting all the models, it was evident that all the models suffered from high variance, some more so than others. Based on accuracy score discrepancy between training and testing data, KNN was the most overfit model with accuracy score close to 100%, but 62.4% with unseen test data. CRNN with dropout layers ended up being the best performer with 98.6% accuracy score with training data and 86.7% with unseen test data.
+After fitting all the models, it was evident that all the models suffered from high variance, some more so than others. Based on accuracy score discrepancy between training and testing data, KNN was the most overfit model with accuracy score close to 100% with training data, but 62.4% with unseen testing data. CRNN with dropout layers ended up being the best performer with 98.6% accuracy score with training data and 86.7% with unseen testing data.
 
-Using CRNN with dropout layers as my primary model, I thought it'd be interesting to see if there are any interesting trends in terms of which genre is misclassified the most.
+Using CRNN with dropout layers as my primary model, I thought it'd be interesting to see if there are any interesting trends/patterns in terms of which genre is misclassified the most.
 
 
 ![](./Images/CMatrix.png)
 
-Looking at the confusion matrix, I found that classical had the least numst of misclassifications whereas rock had the most number of misclassifications. Digging a little bit deeper into misclassifications within rock, I found that many were being misclassified as metal, blues, and country. After listening to the music audio samples, I found that some portions of the samples were "uncharacteristic" to a typical rock genre song and had a different feel and taste to them which suggests why the model may have misclassified them.
+Looking at the confusion matrix, I found that classical had the least number of misclassifications whereas the rock genre had the most number of misclassifications. Digging a little bit deeper into misclassifications within rock, many were being misclassified as metal, blues, and country. After listening to a couple of misclassified samples, I found that some portions of the samples were "uncharacteristic" to a typical rock genre song and had a different feel and taste.
 
 ---
 # Conclusions / Future Considerations
 
-Working with raw music audio files, I leveraged a Python module Librosa to perform my own feature extraction. Using these features which are numerical representation of the samples, I ran various traditional classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost. Out of these traditional classifiers, SVM was the best performer and scored 100% accuracy with training data and 72% accuracy with unseen testing data.
+Working with raw music audio files, I used Librosa to perform my own feature extraction. Using these features which are numerical representation of the samples, I trained various classifiers such as Logistic Regression, KNN, Random Forests, SVM, Gradient Boost, and XGBoost. Out of these classifiers, SVM was the best performer and scored 100% accuracy score with training data and 72% accuracy score with unseen testing data.
 
-To incorporate deep learning models, I extracted Mel-Spectrograms for all the audio samples. However, since 1,000 music samples were not enough to train a deep learning model, I sliced each 30 sec sample into 10 separate chunks, each 3 seconds long. Since Mel-Spectrograms are essentially images, I created a Convolutional Neural Network model (with and without regularization for comparison purposes) and fed the images through the model.
+To incorporate deep learning models, I extracted Mel-Spectrograms for all the data samples. However, since 1,000 music samples were not enough to train a deep learning model, I sliced each 30 sec sample into 10 separate chunks, each 3 seconds long. Since Mel-Spectrograms are essentially images, I created a Convolutional Neural Network model (with and without regularization for comparison purposes) and trained the model using mel-spectrograms.
 
 Lastly, to implement a more hybrid approah that is gaining attraction in the field of voice, speech, and music recognition, I implemented a Convolutional Recurrent Neural Network model in which convolutional layers and recurrent layers (GRU) are combined together. CRNN model was able to achieve an accuracy score as high as 86.7% with unseen test data which was very promising. 
 
@@ -99,3 +100,5 @@ Here are some future considerations:
 3. Another important question to consider is if music genre is something that will be relevant in years to come. Latest trend seems to be that we cluster music together based on artists we like to listen to rather than specific genres. I do think from a music inventory management standpoint, genre classification can still add a lot of value by enabling companies to undertand their customers and their taste/preference in music.
 
 4. Upon further investigation, it was clear certain songs by nature do not fall "cleanly" into a particular genre. As a solution, it may be more appropriate to classify them as clusters of genres.
+
+5. For application, companies can group users based on genres/clusters and deploy targeted advertisements, study their behaviors for deeper insight, and offer a customized/personal experience.
