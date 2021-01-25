@@ -9,7 +9,7 @@ As somone who casually enjoys listening to music and plays a few instruments her
 ### Problem Statement
 Music plays a critical role in our everyday lives. Companies like Spotify, Pandora, Apple, Google, and other major music platforms are constantly looking for new and fresh ways to categorize and classify a vast number of artists and genres based on users' taste and preference. Consequently, it is absolutely critical for companies to be able to manage their music inventory efficiently in order to connect with their customers more personally.
 
-In this project, I set out to answer the question: **'Given a set of music audio samples. can I apply machine learning to predict their genres with a high level of accuracy?'**
+In this project, I set out to answer the question: **'Given a set of music audio samples, can I apply machine learning to predict their genres with a high level of accuracy?'**
 
 ---
 
