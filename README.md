@@ -15,7 +15,7 @@ In this project, I set out to answer the question: **Can machine learning, with 
 ---
 
 ### Data
-For this project, I decided to use the GTZAN Genre Collection dataset. The dataset consists of 1,000 audio tracks. It is divided into 10 different genres, each represented by 100 tracks. Each track is 30 seconds long. These samples were collected between 2000-2001 from a variety of sources including personal CDs, radio, microphone recordings, and other sources in order to represent a vareity of recording conditions.
+For this project, I used the GTZAN Genre Collection dataset. The dataset consists of 1,000 audio tracks. It is divided into 10 different genres, each represented by 100 tracks. Each track is 30 seconds long. These samples were collected between 2000-2001 from a variety of sources including personal CDs, radio, microphone recordings, and other sources in order to represent a vareity of recording conditions.
 
 One caveat here was that 1000 samples are not enough to train a deep learning model. Consequently, I decided to create "mini-samples" by slicing each track down to 10 chunks, each 3 seconds. As a result, I expanded my data set from 1000 sample tracks to 10,000 sample tracks.
 

@@ -15,7 +15,9 @@ In this project, I set out to answer the question: **Can machine learning, with 
 ---
 
 ### Data
-For this project, I decided to use the GTZAN Genre Collection dataset. The dataset consists of 1,000 audio tracks. It is divided into 10 different genres, each represented by 100 tracks. Each track is 30 seconds long. These samples were collected between 2000-2001 from a variety of sources including personal CDs, radio, microphone recordings, and other sources in order to represent a vareity of recording conditions.
+For this project, I used the GTZAN Genre Collection dataset. The dataset consists of 1,000 audio tracks. It is divided into 10 different genres, each represented by 100 tracks. Each track is 30 seconds long. These samples were collected between 2000-2001 from a variety of sources including personal CDs, radio, microphone recordings, and other sources in order to represent a vareity of recording conditions.
+
+One caveat here was that 1000 samples are not enough to train a deep learning model. Consequently, I decided to create "mini-samples" by slicing each track down to 10 chunks, each 3 seconds. As a result, I expanded my data set from 1000 sample tracks to 10,000 sample tracks.
 
 Source: http://marsyas.info/downloads/datasets.html
 
@@ -57,18 +59,17 @@ For this project, I decided incorporate three stages of modeling. First, I train
 ![](./Images/Melspecs.png)
 
 
-Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are visual rerepresentation of sound. Mel-speectrograms are essentially images so I used them to train a Convolutional Neural Network model.
+Second, I derived what are known as Mel-Spectrograms for all the music audio samples, which are 2D images that described by time, frequency, and magnitude (color). Mel-speectrograms are essentially images so I used them to train a Convolutional Neural Network model which works really well with spatial and image data.
 
 Lastly, since music also contains sequential information over a duration of time, I applied a hybrid approach of combining convolutional layers and recurrent layers (GRU). Based on research, I found this approach is gaining attraction in the field of voice, speech, and music recognition.
 
-For the last two deep learning models, it's important to note that since 1,000 samples were not enough to train deep learning models, I had to create mini-samples by slicing each 30 sec sample into 10 separate 3 sec mini-samples. By doing so, I was able to expand my entire dataset from 1,000 samples to 10,000 samples.
 
 ----
 # Evaluations
 ![](./Images/Scatterplot.png)
 
 
-For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score of 10% wasn't too difficult to outperform, so I decided to rank the models based on their accuracy scores with unseen testing data.
+For this project, I decided to evaluate each model based on the accuracy score. The baseline accuracy score in this project was 10% since I had 10 genres, all with equal number of samples. To make this a bit more challenging task, I found that current state-of-the-art accuracy score is around 91%. I set out to see if I could either outperform or be somewhere close in that range.
 
 After fitting all the models, it was evident that all the models suffered from high variance, some more so than others. Based on accuracy score discrepancy between training and testing data, KNN was the most overfit model with accuracy score close to 100% with training data, but 62.4% with unseen testing data. CRNN with dropout layers ended up being the best performer with 98.6% accuracy score with training data and 86.7% with unseen testing data.
 
